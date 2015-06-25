@@ -33,7 +33,7 @@ class NotesViewController: UIViewController {
         }
         
         let source = segue.sourceViewController as! NoteDisplayViewController
-        //source.note = nil;
+        source.note = nil;
         
         
       default:
@@ -62,18 +62,28 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
       
-      let realm = Realm()
       notesTableView.dataSource = self
       notesTableView.delegate = self
-      
-      notes = realm.objects(Note).sorted("date", ascending: false)
     }
   
+  override func viewWillAppear(animated: Bool) {
+    
+    super.viewWillAppear(animated)
+    let realm = Realm()
+    notes = realm.objects(Note).sorted("date", ascending: false)
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if (segue.identifier == "ShowExistingNote") {
+      let noteViewController = segue.destinationViewController as! NoteDisplayViewController
+      noteViewController.note = selectedNote
+    }
+  }
 
 }
 
