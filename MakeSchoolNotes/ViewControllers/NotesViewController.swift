@@ -11,6 +11,17 @@ import RealmSwift
 
 class NotesViewController: UIViewController {
 
+  
+  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var tableView: UITableView!
+  
+  enum State {
+    case DefaultMode
+    case SearchMode
+  }
+  
+  var state: State = .DefaultMode
+  
   @IBOutlet weak var notesTableView: UITableView!
   
   
@@ -54,6 +65,12 @@ class NotesViewController: UIViewController {
     }
   }
   
+  func searchNotes(searchString: String) -> Results<Note> {
+    let realm = Realm()
+    let searchPredicate = NSPredicate(format: "title CONTAINS[c] %@ OR content CONTAINS[c] %@", searchString, searchString)
+    return realm.objects(Note).filter(searchPredicate)
+  }
+  
   
   /*
   /   Set Up functions
@@ -64,6 +81,7 @@ class NotesViewController: UIViewController {
       
       notesTableView.dataSource = self
       notesTableView.delegate = self
+      //searchBar.delegate = self
     }
   
   override func viewWillAppear(animated: Bool) {
