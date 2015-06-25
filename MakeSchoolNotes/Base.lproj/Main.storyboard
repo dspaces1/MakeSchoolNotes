@@ -150,29 +150,49 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-Fo-5RN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-Fo-5RN">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcI-ZC-jCE">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcI-ZC-jCE">
                                         <rect key="frame" x="8" y="15" width="584" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Z3B-Jt-C8U"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3R-83-B1o">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3R-83-B1o">
                                         <rect key="frame" x="8" y="53" width="584" height="431"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="431" id="J3z-gI-MLB"/>
+                                        </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="pcI-ZC-jCE" firstAttribute="trailing" secondItem="3j3-Fo-5RN" secondAttribute="trailingMargin" id="IeM-b8-HGg"/>
+                                    <constraint firstItem="pcI-ZC-jCE" firstAttribute="top" secondItem="3j3-Fo-5RN" secondAttribute="top" constant="15" id="LU6-NN-2yB"/>
+                                    <constraint firstItem="i3R-83-B1o" firstAttribute="leading" secondItem="pcI-ZC-jCE" secondAttribute="leading" id="TAZ-wM-GWi"/>
+                                    <constraint firstItem="i3R-83-B1o" firstAttribute="top" secondItem="pcI-ZC-jCE" secondAttribute="bottom" constant="8" symbolic="YES" id="XaB-rO-XYv"/>
+                                    <constraint firstItem="pcI-ZC-jCE" firstAttribute="centerX" secondItem="3j3-Fo-5RN" secondAttribute="centerX" id="jVc-tZ-3B5"/>
+                                    <constraint firstItem="i3R-83-B1o" firstAttribute="bottom" secondItem="3j3-Fo-5RN" secondAttribute="bottomMargin" id="rYf-Ur-fxI"/>
+                                    <constraint firstItem="pcI-ZC-jCE" firstAttribute="leading" secondItem="3j3-Fo-5RN" secondAttribute="leadingMargin" id="sMr-Rt-emJ"/>
+                                    <constraint firstItem="pcI-ZC-jCE" firstAttribute="trailing" secondItem="i3R-83-B1o" secondAttribute="trailing" id="yMQ-49-mWX"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="WaH-EZ-Bc0" secondAttribute="trailing" constant="-16" id="6eL-10-1ky"/>
-                            <constraint firstItem="Qdz-xp-e1B" firstAttribute="top" secondItem="WaH-EZ-Bc0" secondAttribute="bottom" id="Czh-IU-LpZ"/>
-                            <constraint firstItem="WaH-EZ-Bc0" firstAttribute="leading" secondItem="F2o-Vo-ViA" secondAttribute="leadingMargin" constant="-16" id="oHY-q0-M8x"/>
+                            <constraint firstItem="Qdz-xp-e1B" firstAttribute="top" secondItem="WaH-EZ-Bc0" secondAttribute="bottom" id="8cp-cv-OUC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WaH-EZ-Bc0" secondAttribute="trailing" constant="-16" id="FVc-5r-HzL"/>
+                            <constraint firstItem="3j3-Fo-5RN" firstAttribute="top" secondItem="oGu-ua-PWM" secondAttribute="bottom" id="G90-p2-597"/>
+                            <constraint firstItem="3j3-Fo-5RN" firstAttribute="bottom" secondItem="WaH-EZ-Bc0" secondAttribute="top" id="PbE-Jn-RQw"/>
+                            <constraint firstItem="3j3-Fo-5RN" firstAttribute="leading" secondItem="WaH-EZ-Bc0" secondAttribute="leading" id="VIl-Bp-prJ"/>
+                            <constraint firstItem="3j3-Fo-5RN" firstAttribute="trailing" secondItem="WaH-EZ-Bc0" secondAttribute="trailing" id="WcR-x5-oS2"/>
+                            <constraint firstItem="WaH-EZ-Bc0" firstAttribute="leading" secondItem="F2o-Vo-ViA" secondAttribute="leadingMargin" constant="-16" id="hoZ-WE-cHB"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
