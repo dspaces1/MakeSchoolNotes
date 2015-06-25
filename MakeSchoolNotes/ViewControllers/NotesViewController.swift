@@ -20,7 +20,7 @@ class NotesViewController: UIViewController {
     case SearchMode
   }
   
-  var state: State = .DefaultMode
+  //var state: State = .DefaultMode
   
   @IBOutlet weak var notesTableView: UITableView!
   
@@ -65,6 +65,26 @@ class NotesViewController: UIViewController {
     }
   }
   
+  var state: State = .DefaultMode {
+    didSet {
+      // update notes and search bar whenever State changes
+      switch (state) {
+      case .DefaultMode:
+        let realm = Realm()
+        notes = realm.objects(Note).sorted("date", ascending: false) //1
+        self.navigationController!.setNavigationBarHidden(false, animated: true) //2
+        searchBar.resignFirstResponder() // 3
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+      case .SearchMode:
+        let searchText = searchBar?.text ?? ""
+        searchBar.setShowsCancelButton(true, animated: true) //4
+        notes = searchNotes(searchText)//5
+        self.navigationController!.setNavigationBarHidden(true, animated: true) //6
+      }
+    }
+  }
+  
   func searchNotes(searchString: String) -> Results<Note> {
     let realm = Realm()
     let searchPredicate = NSPredicate(format: "title CONTAINS[c] %@ OR content CONTAINS[c] %@", searchString, searchString)
@@ -86,9 +106,12 @@ class NotesViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     
-    super.viewWillAppear(animated)
+    
     let realm = Realm()
     notes = realm.objects(Note).sorted("date", ascending: false)
+    
+    state = .DefaultMode
+    super.viewWillAppear(animated)
   }
 
     override func didReceiveMemoryWarning() {
@@ -153,4 +176,20 @@ extension NotesViewController: UITableViewDelegate{
     }
   }
 
+}
+
+extension NotesViewController: UISearchBarDelegate {
+  
+  func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    state = .SearchMode
+  }
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    state = .DefaultMode
+  }
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    notes = searchNotes(searchText)
+  }
+  
 }

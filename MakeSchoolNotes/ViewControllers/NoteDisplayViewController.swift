@@ -91,6 +91,9 @@ class NoteDisplayViewController: UIViewController {
       deleteButton.enabled = false
     }
     
+    
+    self.navigationController!.setNavigationBarHidden(false, animated: true)
+    
   }
   
   override func viewWillDisappear(animated: Bool) {
